@@ -59,10 +59,31 @@ Settings
 
 * `AZLIST` --- A comma separated list of availability zones you want your instances and load balancer to span, make sure you have at least this number of minimum instances.
 
-* `SECRET_KEY` --- A django secret key can be specified here to be filled out with puppet.
+* `SECRET_KEY` --- An optional django secret key can be specified here to be filled out with puppet.
 
 * `AWS_ACCESS_KEY_ID` --- An AWS key that will be passed down to puppet for webapps use.
 
 * `AWS_SECRET_ACCESS_KEY` --- A secret AWS key that will be passed to puppet for the webapp to use.
 
 * `S3_BUCKET` --- An S3 bucket we pass down to puppet for the webapp to use.
+
+Puppet
+------
+
+Puppet variables will be available as `$cfn_*'
+
+Currently the list of puppet variables are:
+
+* `adminemail`  --- Value of `ADMINEMAIL`
+* `debug` --- Value of `DEBUG`. Used by django settings.
+* `host` --- Database host. Created by CloudFormation.
+* `database` --- Database name.
+* `user` --- Database user.
+* `password` --- Database password.
+* `aws_secret_key` --- Value of `AWS_SECRET_ACCESS_KEY`.
+* `aws_key` --- Value of `AWS_ACCESS_KEY_ID`
+* `s3_bucket` --- Value of `S3_BUCKET`
+* `domain` --- Value of `DOMAINNAME`
+* `hostname` --- Value of `HOSTNAME1`
+* `hostname2` --- Value of `HOSTNAME2` if provided
+* `secret_key` --- Value of `SECRET_KEY` if provided
